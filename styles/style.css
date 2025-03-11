@@ -15,6 +15,10 @@ body {
     background: var(--bgDefaultPrimary);
 }
 
+input {
+    font-family: var(--fontInter);
+}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -441,17 +445,31 @@ body {
 
     .watchlist-items-wrapper {
         display: flex;
+        width: 100%;
         gap: 16px;
         align-items: center;
-        overflow: hidden;
+        overflow-x: auto;
         white-space: nowrap;
         position: relative;
+        cursor: grab;
+
+        * {
+            user-select: none;
+        }
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
 
         .marquee-track {
-            display: flex;
+            display: inline-flex;
+            cursor: grab;
             gap: 16px;
-            animation: scroll 30s linear infinite;
+            white-space: nowrap;
+            animation: scroll 60s linear infinite;
         }
+
+
 
         .watchlist-item {
             display: flex;
@@ -493,11 +511,11 @@ body {
     }
 
     @media (min-width: 1024px) {
-        padding: 16px 32px;
+        padding: 6px 32px;
     }
 
     @media (min-width: 600px) and (max-width: 1023px) {
-        padding: 12px 24px;
+        padding: 6px 24px;
     }
 }
 
@@ -592,7 +610,7 @@ body {
                 gap: 8px;
                 padding: 4px 8px;
                 border-radius: 10px;
-                background: var(--bgDefaultPrimaryHov);
+                background: var(--bgDefaultPrimary);
                 border: 1px solid var(--borderDefaultPrimary);
                 line-height: 1.2em;
                 font-size: 16px;
@@ -605,7 +623,7 @@ body {
                 }
 
                 &:hover {
-                    background: var(--bgDefaultPrimary);
+                    background: var(--bgDefaultPrimaryHov);
                 }
             }
 
@@ -622,12 +640,16 @@ body {
                     line-height: 1.2em;
                     cursor: pointer;
                     height: 32px;
+                    transition: all 0.3s ease;
 
                     &.active {
                         background: var(--bgBrandDefault);
                     }
 
 
+                    &:hover:not(.active) {
+                        background: var(--bgDefaultPrimaryHov);
+                    }
 
 
                     &:first-of-type {
@@ -677,14 +699,21 @@ body {
                     align-items: center;
                     justify-content: center;
                     height: 32px;
+                    width: 69px;
                     padding: 4px 8px;
                     border: 1px solid var(--borderDefaultPrimary);
                     border-radius: 10px;
                     background: transparent;
                     color: inherit;
-                    cursor: pointer;
                     flex: none;
                     white-space: nowrap;
+                    outline: none;
+
+
+
+                    &:focus {
+                        outline: none;
+                    }
                 }
 
                 @media (max-width:599px) {
@@ -700,12 +729,17 @@ body {
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                background: var(--bgDefaultPrimaryHov);
+                background: var(--bgDefaultPrimary);
                 border: 1px solid var(--borderDefaultPrimary);
                 border-radius: 10px;
                 flex: none;
                 white-space: nowrap;
                 cursor: pointer;
+                transition: all 0.3s ease;
+
+                &:hover {
+                    background: var(--bgDefaultPrimaryHov);
+                }
 
 
                 @media (min-width:600px) {
@@ -895,6 +929,26 @@ body {
     gap: 16px;
     border-top: 1px solid var(--borderDefaultSecondary);
     margin-top: auto !important;
+
+
+    &>:first-of-type {
+        transition: all 0.3s ease;
+        border: 1px solid var(--bgDefaultPrimaryHov);
+
+        &:hover {
+            background: transparent;
+            border: 1px solid var(--borderDefaultSecondary);
+        }
+    }
+
+    &>:last-of-type {
+        transition: all 0.3s ease;
+        border: 1px solid var(--bgBrandDefault);
+
+        &:hover {
+            background: var(--bgBrandSecondary) !important;
+        }
+    }
 }
 
 .cust-modal-btn {
@@ -935,9 +989,13 @@ body {
     align-items: center;
     gap: 8px;
     cursor: pointer;
-    padding: 7.5px 8px;
     width: fit-content;
     border-radius: 10px;
+
+    @media (max-width:1024px) {
+        padding: 7.5px 8px;
+    }
+
 }
 
 .cust-view-input-div {
@@ -1149,7 +1207,7 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
             }
 
             tr:hover:not(:has(th)) {
-                background: var(--bg-secondary) !important;
+                background: var(--bgUtilitiesHighlight) !important;
             }
         }
 
@@ -1252,7 +1310,12 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
                         line-height: 1.2em;
                         color: var(--textDefaultPrimary);
                         cursor: pointer;
+                        transition: all 0.3s ease;
 
+
+                        &:hover {
+                            background: var(--bgBrandSecondary);
+                        }
 
                         &:focus {
                             outline: none;
