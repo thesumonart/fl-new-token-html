@@ -1098,6 +1098,39 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
     }
 }
 
+.audit_text_ico {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    position: relative;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.tooltip span {
+    display: none;
+    position: absolute;
+    bottom: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 6px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 10;
+}
+
+.tooltip:hover span {
+    display: block;
+}
+
 /* Table customize modal section ends here */
 /* Table Controls section ends here */
 
@@ -1162,6 +1195,8 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
             }
         }
 
+
+
         .table-heading {
             display: grid;
             padding: 16px calc((100vw - 1420px) / 2);
@@ -1177,9 +1212,12 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
                 color: var(--textDefaultTertiary);
                 font-weight: 300;
                 background: transparent;
+                user-select: none;
+                cursor: pointer;
 
                 &:last-child {
                     text-align: end;
+                    cursor: unset;
                 }
             }
         }
@@ -1188,10 +1226,6 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
             vertical-align: text-top;
             color: var(--textDefaultPrimary);
             font-size: 16px;
-        }
-
-        .col-span {
-            column-span: 6;
         }
 
         thead tr {
@@ -1218,10 +1252,10 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
             align-items: center;
             gap: 16px;
             width: -webkit-fill-available;
-            grid-template-columns: 170px 7fr;
+            grid-template-columns: 170px 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 
             @media (max-width: 1100px) {
-                grid-template-columns: 170px calc(100px + 100px + 100px + 100px + 130px + 150px + 100px);
+                grid-template-columns: 170px 100px 100px 100px 100px 130px 150px 100px;
             }
 
             @media (min-width: 1460px) {
@@ -1303,18 +1337,7 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
             object-fit: cover;
         }
 
-        .row-content {
-            display: grid;
-            align-items: center;
-            gap: 16px;
-            width: 100%;
-            justify-content: space-between;
-            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
 
-            @media (max-width: 1100px) {
-                grid-template-columns: 100px 100px 100px 100px 130px 150px 100px;
-            }
-        }
 
         .token-market-cap-wrapper,
         .token-liquidity-wrapper,
@@ -1404,37 +1427,6 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
     }
 }
 
-.audit_text_ico {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    position: relative;
-}
 
-.tooltip {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-}
-
-.tooltip span {
-    display: none;
-    position: absolute;
-    bottom: 120%;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: black;
-    color: #fff;
-    text-align: center;
-    padding: 6px 10px;
-    border-radius: 5px;
-    font-size: 12px;
-    white-space: nowrap;
-    z-index: 10;
-}
-
-.tooltip:hover span {
-    display: block;
-}
 
 /* New Tokens Table section ends here*/

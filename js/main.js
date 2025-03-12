@@ -223,3 +223,89 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+// Table sorting
+
+// Get all table headers
+const table = document.querySelector("table");
+const headers = table.querySelectorAll("th");
+
+headers.forEach((header, index) => {
+  if (header.textContent.trim() !== "Action") {
+    header.addEventListener("click", () => {
+      sortTableByColumn(table, index);
+    });
+  }
+});
+
+function sortTableByColumn(table, columnIndex) {
+  const rows = Array.from(table.querySelectorAll("tbody tr"));
+  const currentSort = table.dataset.sortColumn === String(columnIndex);
+  const isAscending = table.dataset.sortOrder === "asc";
+
+  if (!currentSort) {
+    rows.sort((rowA, rowB) => {
+      const cellA = rowA.cells[columnIndex].textContent.trim();
+      const cellB = rowB.cells[columnIndex].textContent.trim();
+
+      const valueA = columnIndex === 1 ? parseTimeValue(cellA) : cellA;
+      const valueB = columnIndex === 1 ? parseTimeValue(cellB) : cellB;
+
+      if (typeof valueA === "number" && typeof valueB === "number") {
+        return valueA - valueB;
+      } else {
+        return valueA.localeCompare(valueB);
+      }
+    });
+    table.dataset.sortColumn = columnIndex;
+    table.dataset.sortOrder = "asc";
+  } else if (currentSort && isAscending) {
+    rows.reverse();
+    table.dataset.sortOrder = "desc";
+  } else {
+    table.dataset.sortColumn = "";
+    table.dataset.sortOrder = "";
+    updateHeaderIcons(headers, null);
+    resetTableToDefault(table);
+    return;
+  }
+
+  rows.forEach((row) => table.querySelector("tbody").appendChild(row));
+  updateHeaderIcons(headers, columnIndex, table.dataset.sortOrder);
+}
+
+function parseTimeValue(timeStr) {
+  const hoursMatch = timeStr.match(/(\d+)h/);
+  const minutesMatch = timeStr.match(/(\d+)min/);
+
+  const hours = hoursMatch ? parseInt(hoursMatch[1]) : 0;
+  const minutes = minutesMatch ? parseInt(minutesMatch[1]) : 0;
+
+  return hours * 60 + minutes;
+}
+
+function updateHeaderIcons(headers, columnIndex, sortOrder) {
+  headers.forEach((header, index) => {
+    header.textContent = header.textContent.replace(/[↑↓]/g, "").trim();
+    header.style.color = ""; // Reset color
+    if (index === columnIndex) {
+      header.textContent += ` ${sortOrder === "asc" ? "↓" : "↑"}`; // Reversed icons
+      header.style.color = sortOrder ? "var(--textBrandDefault)" : ""; // Color when sorted
+    }
+  });
+}
+
+function resetTableToDefault(table) {
+  const tbody = table.querySelector("tbody");
+  const rows = Array.from(tbody.querySelectorAll("tr"));
+  rows.sort(
+    (rowA, rowB) => rowA.dataset.defaultIndex - rowB.dataset.defaultIndex
+  );
+  rows.forEach((row) => tbody.appendChild(row));
+}
+
+// Store the initial row order
+const tbody = table.querySelector("tbody");
+Array.from(tbody.querySelectorAll("tr")).forEach((row, index) => {
+  row.dataset.defaultIndex = index;
+});
