@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
     <link rel="stylesheet" href="./styles/style.css" />
     <title>New Tokens</title>
   </head>
@@ -124,7 +128,7 @@
               </button>
             </div>
 
-            <div class="watchlist-items-wrapper">
+            <!-- <div class="watchlist-items-wrapper">
               <div class="watchlist-item">
                 <figure class="token-icon">
                   <img src="./public/images/token-icon.svg" alt="Token-icon" />
@@ -172,6 +176,68 @@
                 <p class="token-name">Token</p>
                 <p class="token-price">$00.00K</p>
                 <p class="token-increment">+000.0%</p>
+              </div>
+            </div> -->
+
+            <div class="watchlist-slider swiper">
+              <div class="swiper-wrapper">
+                <!-- Duplicate this slide multiple times with different data -->
+                <div class="swiper-slide watchlist-item">
+                  <figure class="token-icon">
+                    <img
+                      src="./public/images/token-icon.svg"
+                      alt="Token-icon"
+                    />
+                  </figure>
+                  <p class="token-name">Token</p>
+                  <p class="token-price">$00.00K</p>
+                  <p class="token-increment">+000.0%</p>
+                </div>
+                <div class="swiper-slide watchlist-item">
+                  <figure class="token-icon">
+                    <img
+                      src="./public/images/token-icon.svg"
+                      alt="Token-icon"
+                    />
+                  </figure>
+                  <p class="token-name">Token</p>
+                  <p class="token-price">$00.00K</p>
+                  <p class="token-increment">+000.0%</p>
+                </div>
+                <div class="swiper-slide watchlist-item">
+                  <figure class="token-icon">
+                    <img
+                      src="./public/images/token-icon.svg"
+                      alt="Token-icon"
+                    />
+                  </figure>
+                  <p class="token-name">Token</p>
+                  <p class="token-price">$00.00K</p>
+                  <p class="token-increment">+000.0%</p>
+                </div>
+                <div class="swiper-slide watchlist-item">
+                  <figure class="token-icon">
+                    <img
+                      src="./public/images/token-icon.svg"
+                      alt="Token-icon"
+                    />
+                  </figure>
+                  <p class="token-name">Token</p>
+                  <p class="token-price">$00.00K</p>
+                  <p class="token-increment">+000.0%</p>
+                </div>
+                <div class="swiper-slide watchlist-item">
+                  <figure class="token-icon">
+                    <img
+                      src="./public/images/token-icon.svg"
+                      alt="Token-icon"
+                    />
+                  </figure>
+                  <p class="token-name">Token</p>
+                  <p class="token-price">$00.00K</p>
+                  <p class="token-increment">+000.0%</p>
+                </div>
+                <!-- More slides here -->
               </div>
             </div>
           </div>
@@ -1163,6 +1229,7 @@
                               />
                             </figure>
                             <p class="developer-percent">00%</p>
+                            <span class="audit-tooltip">Developer</span>
                           </span>
                           <span class="audit-item top-holder-audit">
                             <figure class="developer-icon">
@@ -1173,6 +1240,7 @@
                               />
                             </figure>
                             <p class="top-holder-percent">19%</p>
+                            <span class="audit-tooltip">Top Holder</span>
                           </span>
                           <span class="audit-item users-audit">
                             <figure class="users-icon">
@@ -1183,6 +1251,7 @@
                               />
                             </figure>
                             <p class="total-users">000K</p>
+                            <span class="audit-tooltip">Total User</span>
                           </span>
                           <span class="audit-item anti-snipe-audit">
                             <figure class="anti-snipe-icon">
@@ -1193,6 +1262,7 @@
                               />
                             </figure>
                             <p class="anti-snipe">YES</p>
+                            <span class="audit-tooltip">Anti Snipe</span>
                           </span>
                         </div>
                       </td>
@@ -1269,6 +1339,7 @@
                               />
                             </figure>
                             <p class="developer-percent">00%</p>
+                            <span class="audit-tooltip">Developer</span>
                           </span>
                           <span class="audit-item top-holder-audit down">
                             <figure class="developer-icon">
@@ -1279,6 +1350,7 @@
                               />
                             </figure>
                             <p class="top-holder-percent">19%</p>
+                            <span class="audit-tooltip">Top Holder</span>
                           </span>
                           <span class="audit-item users-audit">
                             <figure class="users-icon">
@@ -1289,6 +1361,7 @@
                               />
                             </figure>
                             <p class="total-users">000K</p>
+                            <span class="audit-tooltip">Total User</span>
                           </span>
                           <span class="audit-item anti-snipe-audit down">
                             <figure class="anti-snipe-icon">
@@ -1299,6 +1372,7 @@
                               />
                             </figure>
                             <p class="anti-snipe">YES</p>
+                            <span class="audit-tooltip">Anti Snipe</span>
                           </span>
                         </div>
                       </td>
@@ -1375,6 +1449,7 @@
                               />
                             </figure>
                             <p class="developer-percent">00%</p>
+                            <span class="audit-tooltip">Developer</span>
                           </span>
                           <span class="audit-item top-holder-audit down">
                             <figure class="developer-icon">
@@ -1385,6 +1460,7 @@
                               />
                             </figure>
                             <p class="top-holder-percent">19%</p>
+                            <span class="audit-tooltip">Top Holder</span>
                           </span>
                           <span class="audit-item users-audit">
                             <figure class="users-icon">
@@ -1395,6 +1471,7 @@
                               />
                             </figure>
                             <p class="total-users">000K</p>
+                            <span class="audit-tooltip">Total User</span>
                           </span>
                           <span class="audit-item anti-snipe-audit down">
                             <figure class="anti-snipe-icon">
@@ -1405,6 +1482,7 @@
                               />
                             </figure>
                             <p class="anti-snipe">YES</p>
+                            <span class="audit-tooltip">Anti Snipe</span>
                           </span>
                         </div>
                       </td>
@@ -1434,7 +1512,9 @@
     </main>
 
     <!-- JavaScript -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="./js/main.js"></script>
+
     <!-- JavaScript -->
   </body>
 </html>

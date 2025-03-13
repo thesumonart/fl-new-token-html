@@ -521,7 +521,56 @@ body {
     }
 }
 
-@keyframes scroll {
+.watchlist-slider {
+    width: 100%;
+    overflow: hidden;
+}
+
+.swiper-wrapper {
+    display: flex;
+    transition-timing-function: linear !important;
+}
+
+.watchlist-item.swiper-slide {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    width: max-content;
+
+    .token-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        overflow: hidden;
+        height: 20px;
+        aspect-ratio: 1/1;
+    }
+
+    .token-name {
+        text-transform: uppercase;
+        color: var(--textDefaultPrimary);
+        line-height: 1.2em;
+        font-size: 16px;
+    }
+
+    .token-price {
+        text-transform: uppercase;
+        color: var(--textDefaultSecondary);
+        line-height: 1.2em;
+        font-size: 16px;
+    }
+
+    .token-increment {
+        text-transform: uppercase;
+        color: var(--textPositiveDefault);
+        line-height: 1.2em;
+        font-size: 16px;
+    }
+}
+
+/* @keyframes scroll {
     0% {
         transform: translateX(0);
     }
@@ -529,7 +578,7 @@ body {
     100% {
         transform: translateX(-100%);
     }
-}
+} */
 
 /* Watchlist section ends here */
 
@@ -798,7 +847,7 @@ body {
 .cust_mod_pop_con {
     background-color: var(--borderDefaultPrimary);
     width: 500px;
-    border-radius: 15px;
+    border-radius: 16px;
     box-sizing: border-box;
     overflow: hidden;
     font-family: var(--fontInter);
@@ -817,8 +866,9 @@ body {
     }
 
     @media (max-width: 420px) {
-        width: 90vw;
-        height: 80vh;
+        width: 100vw;
+        height: 90vh;
+        border-radius: 16px 16px 0 0;
     }
 }
 
@@ -836,6 +886,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+
+
+    @media (max-width:420px) {
+        align-items: end;
+    }
 }
 
 .cus-modal-header {
@@ -1081,6 +1136,12 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
 
     .cust-view-input:has(.view-input:checked) {
         background: var(--bgBrandDefault);
+
+        svg {
+            path {
+                stroke: #6F93FE;
+            }
+        }
     }
 
     .checkbox_inp.audit {
@@ -1103,6 +1164,11 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
     align-items: center;
     gap: 5px;
     position: relative;
+
+
+    @media (max-width:1024px) {
+        display: none;
+    }
 }
 
 .tooltip {
@@ -1165,7 +1231,7 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
         }
 
         .table-scroll table {
-            min-width: 900px;
+            min-width: 1100px;
             width: 100%;
             border-collapse: collapse;
         }
@@ -1191,7 +1257,7 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
             }
 
             tr:hover:not(:has(th)) {
-                background: var(--bgUtilitiesHighlight) !important;
+                background: rgba(69, 110, 235, 0.01) !important;
             }
         }
 
@@ -1403,6 +1469,8 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
                 gap: 2px;
                 padding: 2px 4px;
                 font-size: 12px;
+                position: relative;
+                cursor: pointer;
 
                 .audit-icon {
                     width: 16px;
@@ -1412,6 +1480,36 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
                 &:not(:last-of-type) {
                     border-right: 0.5px solid var(--borderDefaultPrimary);
                 }
+
+                .audit-tooltip {
+                    display: none;
+                    position: absolute;
+                    bottom: 120%;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background-color: black;
+                    color: #fff;
+                    text-align: center;
+                    padding: 6px 10px;
+                    border-radius: 5px;
+                    font-size: 12px;
+                    white-space: nowrap;
+                    z-index: 10;
+                    overflow: hidden;
+                    transition: all 0.3s ease;
+                }
+
+                &:hover {
+                    .audit-tooltip {
+                        display: block;
+                        visibility: visible;
+                        opacity: 1;
+
+                    }
+                }
+
+
+
             }
 
             .top-holder-audit,

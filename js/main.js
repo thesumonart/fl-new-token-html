@@ -42,93 +42,53 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // Watchlist items
 
-document.addEventListener("DOMContentLoaded", () => {
-  const wrapper = document.querySelector(".watchlist-items-wrapper");
-  const content = wrapper.innerHTML;
+document.addEventListener("DOMContentLoaded", function () {
+  // Clone slides to create enough content for seamless looping
+  const wrapper = document.querySelector(".swiper-wrapper");
+  const originalSlides = document.querySelectorAll(".watchlist-item");
 
-  // Create multiple copies to ensure no gaps and make it look like a slider
-  wrapper.innerHTML = `<div class="marquee-track">${content}${content}${content}</div>`;
-
-  const marqueeTrack = document.querySelector(".marquee-track");
-  const contentWidth = marqueeTrack.scrollWidth / 3; // Width of one set of content
-
-  let currentIndex = 0; // Track the current index of the visible slide
-  let animationPaused = false;
-  let lastScrollPosition = 0;
-
-  function scrollToSlide(index) {
-    marqueeTrack.scrollLeft = index * contentWidth;
+  // Clone slides multiple times to ensure enough content
+  for (let i = 0; i < 5; i++) {
+    originalSlides.forEach((slide) => {
+      const clone = slide.cloneNode(true);
+      wrapper.appendChild(clone);
+    });
   }
 
-  function scrollMarquee() {
-    if (animationPaused) return;
-
-    currentIndex++;
-    if (currentIndex >= 3) {
-      // 3 because there are 3 copies of the content
-      currentIndex = 0;
-    }
-
-    scrollToSlide(currentIndex);
-  }
-
-  // Run the marquee scroll every 3 seconds (auto-scroll functionality)
-  const scrollInterval = setInterval(scrollMarquee, 3000);
-
-  // Horizontal drag-to-scroll functionality
-  let isDragging = false;
-  let startX, scrollLeft;
-
-  // When mouse is pressed down
-  marqueeTrack.addEventListener("mousedown", (e) => {
-    isDragging = true;
-    animationPaused = true;
-    clearInterval(scrollInterval); // Stop auto-scroll when user starts dragging
-
-    startX = e.pageX - marqueeTrack.offsetLeft;
-    scrollLeft = marqueeTrack.scrollLeft;
-    marqueeTrack.style.cursor = "grabbing"; // Change cursor on drag
+  const watchlistSwiper = new Swiper(".watchlist-slider", {
+    slidesPerView: "auto",
+    spaceBetween: 16,
+    loop: true,
+    loopAdditionalSlides: 30,
+    speed: 3000,
+    allowTouchMove: true,
+    autoplay: {
+      delay: 0,
+      disableOnInteraction: false,
+    },
+    freeMode: {
+      enabled: true,
+      momentum: false,
+    },
   });
 
-  // When mouse is moved
-  marqueeTrack.addEventListener("mousemove", (e) => {
-    if (!isDragging) return;
+  // Fix for hover pausing with immediate effect
+  const sliderEl = document.querySelector(".watchlist-slider");
 
-    const x = e.pageX - marqueeTrack.offsetLeft;
-    const walk = (x - startX) * 2; // Adjust scroll speed
-    marqueeTrack.scrollLeft = scrollLeft - walk;
+  sliderEl.addEventListener("mouseenter", function () {
+    // Stop autoplay immediately on hover
+    watchlistSwiper.autoplay.stop();
   });
 
-  // When mouse button is released
-  marqueeTrack.addEventListener("mouseup", () => {
-    isDragging = false;
-    marqueeTrack.style.cursor = "grab"; // Reset cursor when not dragging
-
-    // Determine the closest slide to snap to
-    const slideIndex = Math.round(marqueeTrack.scrollLeft / contentWidth);
-    currentIndex = slideIndex;
-    scrollToSlide(currentIndex);
-
-    // Resume auto-scrolling from the current position
-    animationPaused = false;
-    setInterval(scrollMarquee, 3000); // Restart auto-scroll
+  sliderEl.addEventListener("mouseleave", function () {
+    // Start autoplay immediately after mouse leave
+    watchlistSwiper.autoplay.start();
   });
 
-  // When mouse leaves the area
-  marqueeTrack.addEventListener("mouseleave", () => {
-    if (isDragging) {
-      isDragging = false;
-      marqueeTrack.style.cursor = "grab";
-
-      // Determine the closest slide to snap to
-      const slideIndex = Math.round(marqueeTrack.scrollLeft / contentWidth);
-      currentIndex = slideIndex;
-      scrollToSlide(currentIndex);
-
-      // Resume auto-scrolling from the current position
-      animationPaused = false;
-      setInterval(scrollMarquee, 3000); // Restart auto-scroll
-    }
+  // Additional fix for immediate restart after reaching the end of the slides
+  watchlistSwiper.on("reachEnd", function () {
+    // Instantly reset to the first slide without transition
+    watchlistSwiper.slideTo(0, 0, false);
   });
 });
 
