@@ -1257,7 +1257,7 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
             }
 
             tr:hover:not(:has(th)) {
-                background: rgba(69, 110, 235, 0.01) !important;
+                background: rgba(69, 110, 235, 0.05) !important;
             }
         }
 
