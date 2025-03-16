@@ -1234,6 +1234,13 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
             min-width: 1100px;
             width: 100%;
             border-collapse: collapse;
+
+
+
+            @media (max-width:420px) {
+                min-width: unset;
+                width: 100vw;
+            }
         }
 
         .table-content-wrapper {
@@ -1256,8 +1263,12 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
                 flex: none;
             }
 
-            tr:hover:not(:has(th)) {
-                background: rgba(69, 110, 235, 0.05) !important;
+            tr {
+                transition: all 160ms ease-in-out;
+
+                &:hover:not(:has(th)) {
+                    background: rgba(69, 110, 235, 0.05) !important;
+                }
             }
         }
 
@@ -1284,6 +1295,27 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
                 &:last-child {
                     text-align: end;
                     cursor: unset;
+                }
+            }
+        }
+
+        @media (max-width:420px) {
+            .table-heading {
+                grid-template-columns: 120px 1fr 1fr 1fr;
+
+                th {
+
+                    &:last-child,
+                    &:nth-last-child(2),
+                    &:nth-last-child(3),
+                    &:nth-last-child(4) {
+                        display: none;
+                    }
+
+                    &:nth-child(4) {
+                        text-align: end;
+                    }
+
                 }
             }
         }
@@ -1335,6 +1367,26 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
             @media (min-width: 600px) and (max-width: 1023px) {
                 padding: 9px 24px;
             }
+
+            @media (max-width:420px) {
+                grid-template-columns: 120px 1fr 1fr 1fr;
+
+                td {
+
+                    &:last-child,
+                    &:nth-last-child(2),
+                    &:nth-last-child(3),
+                    &:nth-last-child(4) {
+                        display: none;
+                    }
+
+                    &:nth-child(4) {
+                        text-align: end;
+                    }
+                }
+            }
+
+
 
             td {
                 .action-cell {

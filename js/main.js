@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
     freeMode: {
       enabled: true,
-      momentum: false,
+      momentum: true,
     },
   });
 
