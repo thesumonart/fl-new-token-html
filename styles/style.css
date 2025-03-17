@@ -941,6 +941,7 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     border-bottom: 0.5px solid var(--borderDefaultSecondary);
+    user-select: none;
 
     &:hover {
         color: var(--textBrandDefault);
