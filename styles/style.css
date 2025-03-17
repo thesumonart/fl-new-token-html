@@ -528,6 +528,7 @@ body {
 
 .swiper-wrapper {
     display: flex;
+    gap: 15px;
     transition-timing-function: linear !important;
 }
 
@@ -890,8 +891,7 @@ body {
     align-items: center;
     justify-content: center;
 
-
-    @media (max-width:420px) {
+    @media (max-width: 420px) {
         align-items: end;
     }
 }
@@ -941,7 +941,6 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     border-bottom: 0.5px solid var(--borderDefaultSecondary);
-    user-select: none;
 
     &:hover {
         color: var(--textBrandDefault);
@@ -981,6 +980,13 @@ body {
             background: var(--bgBrandSecondary) !important;
         }
     }
+
+    @media (max-width:420px) {
+        margin: 0 12px;
+
+    }
+
+
 }
 
 .cust-modal-btn {
@@ -1017,6 +1023,7 @@ body {
 
     }
 }
+
 
 .view-input-list-item {
     margin-bottom: 12px;
@@ -1152,7 +1159,7 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
 
         svg {
             path {
-                stroke: #6F93FE;
+                stroke: #6f93fe;
             }
         }
     }
@@ -1178,8 +1185,7 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
     gap: 5px;
     position: relative;
 
-
-    @media (max-width:1024px) {
+    @media (max-width: 1024px) {
         display: none;
     }
 }
@@ -1247,13 +1253,6 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
             min-width: 1100px;
             width: 100%;
             border-collapse: collapse;
-
-
-
-            @media (max-width:420px) {
-                min-width: unset;
-                width: 100vw;
-            }
         }
 
         .table-content-wrapper {
@@ -1276,16 +1275,10 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
                 flex: none;
             }
 
-            tr {
-                transition: all 160ms ease-in-out;
-
-                &:hover:not(:has(th)) {
-                    background: rgba(69, 110, 235, 0.05) !important;
-                }
+            tr:hover:not(:has(th)) {
+                background: rgba(69, 110, 235, 0.05) !important;
             }
         }
-
-
 
         .table-heading {
             display: grid;
@@ -1308,27 +1301,6 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
                 &:last-child {
                     text-align: end;
                     cursor: unset;
-                }
-            }
-        }
-
-        @media (max-width:420px) {
-            .table-heading {
-                grid-template-columns: 120px 1fr 1fr 1fr;
-
-                th {
-
-                    &:last-child,
-                    &:nth-last-child(2),
-                    &:nth-last-child(3),
-                    &:nth-last-child(4) {
-                        display: none;
-                    }
-
-                    &:nth-child(4) {
-                        text-align: end;
-                    }
-
                 }
             }
         }
@@ -1380,26 +1352,6 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
             @media (min-width: 600px) and (max-width: 1023px) {
                 padding: 9px 24px;
             }
-
-            @media (max-width:420px) {
-                grid-template-columns: 120px 1fr 1fr 1fr;
-
-                td {
-
-                    &:last-child,
-                    &:nth-last-child(2),
-                    &:nth-last-child(3),
-                    &:nth-last-child(4) {
-                        display: none;
-                    }
-
-                    &:nth-child(4) {
-                        text-align: end;
-                    }
-                }
-            }
-
-
 
             td {
                 .action-cell {
@@ -1467,8 +1419,6 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
             border-radius: 10px;
             object-fit: cover;
         }
-
-
 
         .token-market-cap-wrapper,
         .token-liquidity-wrapper,
@@ -1569,12 +1519,8 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
                         display: block;
                         visibility: visible;
                         opacity: 1;
-
                     }
                 }
-
-
-
             }
 
             .top-holder-audit,
@@ -1589,7 +1535,5 @@ input[type="checkbox"]:checked+.cust-svg-wrapper svg {
         }
     }
 }
-
-
 
 /* New Tokens Table section ends here*/

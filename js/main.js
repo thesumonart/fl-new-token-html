@@ -41,54 +41,17 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Watchlist items
-
 document.addEventListener("DOMContentLoaded", function () {
-  // Clone slides to create enough content for seamless looping
-  const wrapper = document.querySelector(".swiper-wrapper");
-  const originalSlides = document.querySelectorAll(".watchlist-item");
+  const marquee = document.querySelector("marquee");
 
-  // Clone slides multiple times to ensure enough content
-  for (let i = 0; i < 5; i++) {
-    originalSlides.forEach((slide) => {
-      const clone = slide.cloneNode(true);
-      wrapper.appendChild(clone);
-    });
-  }
-
-  const watchlistSwiper = new Swiper(".watchlist-slider", {
-    slidesPerView: "auto",
-    spaceBetween: 16,
-    loop: true,
-    loopAdditionalSlides: 30,
-    speed: 3000,
-    allowTouchMove: true,
-    autoplay: {
-      delay: 0,
-      disableOnInteraction: false,
-    },
-    freeMode: {
-      enabled: true,
-      momentum: true,
-    },
+  // Stop marquee on mouse enter
+  marquee.addEventListener("mouseenter", function () {
+    this.stop();
   });
 
-  // Fix for hover pausing with immediate effect
-  const sliderEl = document.querySelector(".watchlist-slider");
-
-  sliderEl.addEventListener("mouseenter", function () {
-    // Stop autoplay immediately on hover
-    watchlistSwiper.autoplay.stop();
-  });
-
-  sliderEl.addEventListener("mouseleave", function () {
-    // Start autoplay immediately after mouse leave
-    watchlistSwiper.autoplay.start();
-  });
-
-  // Additional fix for immediate restart after reaching the end of the slides
-  watchlistSwiper.on("reachEnd", function () {
-    // Instantly reset to the first slide without transition
-    watchlistSwiper.slideTo(0, 0, false);
+  // Resume marquee on mouse leave
+  marquee.addEventListener("mouseleave", function () {
+    this.start();
   });
 });
 
