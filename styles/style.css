@@ -464,52 +464,6 @@ body {
         &::-webkit-scrollbar {
             display: none;
         }
-
-        .marquee-track {
-            display: inline-flex;
-            cursor: grab;
-            gap: 16px;
-            white-space: nowrap;
-            animation: scroll 60s linear infinite;
-        }
-
-        .watchlist-item {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            cursor: pointer;
-
-            .token-icon {
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border-radius: 4px;
-                overflow: hidden;
-                height: 20px;
-                aspect-ratio: 1/1;
-            }
-
-            .token-name {
-                text-transform: uppercase;
-                color: var(--textDefaultPrimary);
-                line-height: 1.2em;
-                font-size: 16px;
-            }
-
-            .token-price {
-                text-transform: uppercase;
-                color: var(--textDefaultSecondary);
-                line-height: 1.2em;
-                font-size: 16px;
-            }
-
-            .token-increment {
-                text-transform: uppercase;
-                color: var(--textPositiveDefault);
-                line-height: 1.2em;
-                font-size: 16px;
-            }
-        }
     }
 
     @media (min-width: 1024px) {
@@ -521,10 +475,6 @@ body {
     }
 }
 
-.watchlist-slider {
-    width: 100%;
-    overflow: hidden;
-}
 
 .swiper-wrapper {
     display: flex;
@@ -536,50 +486,67 @@ body {
     display: flex;
     align-items: center;
     gap: 4px;
-    cursor: pointer;
     width: max-content;
 
-    .token-icon {
+    .watchlist-item-content {
         display: flex;
         align-items: center;
-        justify-content: center;
-        border-radius: 4px;
-        overflow: hidden;
-        height: 20px;
-        aspect-ratio: 1/1;
+        gap: 4px;
+        cursor: pointer;
+
+        .token-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            overflow: hidden;
+            height: 20px;
+            aspect-ratio: 1/1;
+        }
+
+        .token-name {
+            text-transform: uppercase;
+            color: var(--textDefaultPrimary);
+            line-height: 1.2em;
+            font-size: 16px;
+        }
+
+        .token-price {
+            text-transform: uppercase;
+            color: var(--textDefaultSecondary);
+            line-height: 1.2em;
+            font-size: 16px;
+        }
+
+        .token-increment {
+            text-transform: uppercase;
+            color: var(--textPositiveDefault);
+            line-height: 1.2em;
+            font-size: 16px;
+        }
     }
 
-    .token-name {
-        text-transform: uppercase;
-        color: var(--textDefaultPrimary);
-        line-height: 1.2em;
-        font-size: 16px;
+    .close-icon-wrapper {
+        display: none;
+        cursor: pointer;
+        margin-left: 4px;
+        width: 16px !important;
+
+        img {
+            height: 100%;
+            width: 100%;
+        }
     }
 
-    .token-price {
-        text-transform: uppercase;
-        color: var(--textDefaultSecondary);
-        line-height: 1.2em;
-        font-size: 16px;
-    }
-
-    .token-increment {
-        text-transform: uppercase;
-        color: var(--textPositiveDefault);
-        line-height: 1.2em;
-        font-size: 16px;
+    &:hover {
+        .close-icon-wrapper {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+        }
     }
 }
 
-/* @keyframes scroll {
-    0% {
-        transform: translateX(0);
-    }
-
-    100% {
-        transform: translateX(-100%);
-    }
-} */
 
 /* Watchlist section ends here */
 
